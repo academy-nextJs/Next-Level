@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.2.0",
+    "@heroui/modal": "^2.2.14",
+    "@heroui/react": "^2.8.0-beta.2",
+    "@heroui/theme": "^2.4.13",
     "axios": "^1.8.4",
     "formik": "^2.4.6",
     "next": "15.3.1",
