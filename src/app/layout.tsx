@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-// import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Providers } from "./ProvidersHeroUi";
 import localFont from "next/font/local";
@@ -12,16 +11,6 @@ const vazirmatn = localFont({
   variable: "--font-vazirmatn",
   display: "swap",
 });
-
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -37,9 +26,7 @@ export default async function RootLayout({
 
   return (
     <html lang="fa" dir="rtl" className={vazirmatn.className}>
-      <body
-      // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body>
         <SessionProvider session={session}>
           <QueryProvider>
             <Providers>{children}</Providers>
