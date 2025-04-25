@@ -9,9 +9,10 @@ import RegisterGray from "./../../assets/ModalRegister/Register-Gray.png";
 import { InputOtp } from "@heroui/react";
 import { HiEyeSlash } from "react-icons/hi2";
 import { IoEyeSharp } from "react-icons/io5";
-import { Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
+import * as Yup from "yup";
 
-export default function App() {
+export default function RegisterModal() {
   const [isOpen, setIsOpen] = useState(false);
   const [step, setStep] = useState(0);
 
@@ -19,6 +20,16 @@ export default function App() {
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("ایمیل معتبر نیست")
+      .required("وارد کردن ایمیل الزامی است"),
+    password: Yup.string()
+      .min(6, "رمز عبور باید حداقل ۶ کاراکتر باشد")
+      .required("رمز عبور الزامی است"),
+  });
+
   const renderStepContent = () => {
     switch (step) {
       case 0:
@@ -37,10 +48,11 @@ export default function App() {
             </div>
             <button
               onClick={nextStep}
-              className="bg-[#E89300] w-fit px-14 h-[40px] text-white rounded-xl "
+              className="bg-gradient-to-r from-[#E89300] to-[#FFB84D] cursor-pointer w-fit px-14 h-[40px] text-white rounded-xl shadow-lg hover:shadow-2xl hover:bg-gradient-to-r hover:from-[#FFB84D] hover:to-[#E89300] transition-all duration-500 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#E89300] focus:ring-opacity-50"
             >
               دریافت کد تایید
             </button>
+
             <p
               className="text-1xl font-bold cursor-pointer"
               onClick={() => setStep(3)}
@@ -68,11 +80,12 @@ export default function App() {
                 variant={"faded"}
                 errorMessage="Invalid OTP code"
                 length={4}
+                size={"lg"}
               />
             </div>
             <button
               onClick={nextStep}
-              className="bg-[#E89300] w-fit px-14 h-[40px] text-white rounded-xl "
+              className="bg-gradient-to-r from-[#E89300] to-[#FFB84D] cursor-pointer w-fit px-14 h-[40px] text-white rounded-xl shadow-lg hover:shadow-2xl hover:bg-gradient-to-r hover:from-[#FFB84D] hover:to-[#E89300] transition-all duration-500 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#E89300] focus:ring-opacity-50"
             >
               تایید
             </button>
@@ -119,7 +132,7 @@ export default function App() {
             </div>
             <button
               onClick={nextStep}
-              className="bg-[#E89300] w-fit px-14 h-[40px] text-white rounded-xl "
+              className="bg-gradient-to-r from-[#E89300] to-[#FFB84D] cursor-pointer w-fit px-14 h-[40px] text-white rounded-xl shadow-lg hover:shadow-2xl hover:bg-gradient-to-r hover:from-[#FFB84D] hover:to-[#E89300] transition-all duration-500 transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-[#E89300] focus:ring-opacity-50"
             >
               ایجاد حساب
             </button>
@@ -134,55 +147,46 @@ export default function App() {
             </p>
             <Formik
               initialValues={{ email: "", password: "" }}
-              onSubmit={(values, { setSubmitting }) => {
-                console.log("ورود با:", values);
-                setSubmitting(false);
+              validationSchema={validationSchema}
+              onSubmit={(values) => {
+                console.log("Values:", values);
               }}
             >
-              {({
-                values,
-                errors,
-                touched,
-                handleChange,
-                handleBlur,
-                handleSubmit,
-                isSubmitting,
-              }) => (
-                <form
-                  onSubmit={handleSubmit}
-                  className="flex flex-col gap-4 w-[300px]"
-                >
+              {({ errors, touched }) => (
+                <Form className="flex flex-col gap-4 w-[300px]">
                   <div className="flex flex-col text-right">
                     <label className="text-[#D27700] font-bold mb-1">
                       نام کاربری ( ایمیل )
                     </label>
-                    <input
+                    <Field
                       type="email"
                       name="email"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.email}
-                      className="border-2 border-[#CCCCCC] bg-white rounded-lg h-[40px] p-2"
+                      className={`border-2 bg-white rounded-lg h-[40px] p-2 ${
+                        errors.email && touched.email
+                          ? "border-red-500"
+                          : "border-[#CCCCCC]"
+                      }`}
                       placeholder="ایمیل را وارد کنید"
                     />
-                    {errors.email && touched.email && (
-                      <span className="text-red-500 text-sm mt-1">
-                        {errors.email}
-                      </span>
-                    )}
+                    <ErrorMessage
+                      name="email"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
                   </div>
 
                   <div className="relative text-right">
                     <label className="text-[#D27700] font-bold mb-1 block">
                       رمز عبور
                     </label>
-                    <input
+                    <Field
                       type={showPassword ? "text" : "password"}
                       name="password"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.password}
-                      className="border-2 border-[#CCCCCC] bg-white rounded-lg w-full h-[40px] p-2 pr-10"
+                      className={`border-2 bg-white rounded-lg w-full h-[40px] p-2 pr-10 ${
+                        errors.password && touched.password
+                          ? "border-red-500"
+                          : "border-[#CCCCCC]"
+                      }`}
                       placeholder="رمز عبور را وارد کنید"
                     />
                     <span
@@ -191,21 +195,20 @@ export default function App() {
                     >
                       {showPassword ? <HiEyeSlash /> : <IoEyeSharp />}
                     </span>
-                    {errors.password && touched.password && (
-                      <span className="text-red-500 text-sm mt-1">
-                        {errors.password}
-                      </span>
-                    )}
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="text-red-500 text-sm mt-1"
+                    />
                   </div>
 
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="bg-[#E89300] w-full h-[40px] text-white rounded-xl"
+                    className="bg-gradient-to-r from-[#E89300] to-[#FFB84D] cursor-pointer w-full h-[40px] text-white rounded-xl shadow-lg hover:shadow-2xl hover:bg-gradient-to-r hover:from-[#FFB84D] hover:to-[#E89300] transition-all duration-500 transform hover:scale-100 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-[#E89300] focus:ring-opacity-50"
                   >
                     ورود
                   </button>
-                </form>
+                </Form>
               )}
             </Formik>
           </>
@@ -223,7 +226,7 @@ export default function App() {
           className="capitalize bg-yellow-500 text-white p-2 rounded"
           onClick={() => {
             setIsOpen(true);
-            setStep(0); // reset to step 0
+            setStep(0);
           }}
         >
           opaque
@@ -231,9 +234,12 @@ export default function App() {
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-white backdrop-blur-lg bg-opacity-50  flex justify-center items-center">
+        <div
+          onClick={() => setIsOpen(false)}
+          className="fixed inset-0 backdrop-blur-sm bg-black/20 flex justify-center items-center z-50"
+        >
           <div
-            className="relative bg-white p-8 w-[722px] h-[472px] border-[3px] border-[#D27700] rounded-l-[16px] rounded-r-[230px] shadow-lg backdrop-blur-md"
+            className="relative  p-8 w-[722px] h-[472px] border-[3px] backdrop-blur-xs   border-[#D27700] rounded-l-[16px] rounded-r-[230px] shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="absolute flex justify-center gap-20 items-center right-36 bg-[#FFF3E3] p-3 w-[684px] h-[408px] border-[2px] border-[#D27700] rounded-r-[16px] rounded-l-[204px] shadow-lg">
@@ -291,13 +297,16 @@ export default function App() {
                 </div>
                 <button
                   onClick={() => setIsOpen(false)}
-                  className="cursor-pointer text-[#444444] text-lg font-medium self-center mb-2"
+                  className="cursor-pointer text-[#444444] text-lg font-medium self-center mb-2 
+             relative pb-1 hover:after:scale-x-100 after:transition-transform after:duration-300
+             after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] 
+             after:bg-red-500 after:scale-x-0 after:origin-left"
                 >
                   بستن
                 </button>
               </div>
 
-              <div className="h-full flex flex-col items-center justify-center gap-12">
+              <div className="h-full flex flex-col items-center justify-center gap-10">
                 {renderStepContent()}
               </div>
 
