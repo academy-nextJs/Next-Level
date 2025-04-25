@@ -128,13 +128,15 @@ export default function App() {
       case 3:
         return (
           <>
-            <p className="font-bold text-2xl text-[#444444]"> ورود به حساب کاربری</p>
+            <p className="font-bold text-2xl text-[#444444]">
+              {" "}
+              ورود به حساب کاربری
+            </p>
             <Formik
               initialValues={{ email: "", password: "" }}
               onSubmit={(values, { setSubmitting }) => {
                 console.log("ورود با:", values);
                 setSubmitting(false);
-                setIsOpen(false);
               }}
             >
               {({
@@ -229,44 +231,60 @@ export default function App() {
       </div>
 
       {isOpen && (
-        <div className="fixed inset-0 bg-white bg-opacity-100 backdrop-blur-xl flex justify-center items-center">
-          <div className="relative bg-white p-8 w-[722px] h-[472px] border-[3px] border-[#D27700] rounded-l-[16px] rounded-r-[230px] shadow-lg backdrop-blur-md">
+        <div className="fixed inset-0 bg-white backdrop-blur-lg bg-opacity-50  flex justify-center items-center">
+          <div
+            className="relative bg-white p-8 w-[722px] h-[472px] border-[3px] border-[#D27700] rounded-l-[16px] rounded-r-[230px] shadow-lg backdrop-blur-md"
+            onClick={(e) => e.stopPropagation()}
+          >
             <div className="absolute flex justify-center gap-20 items-center right-36 bg-[#FFF3E3] p-3 w-[684px] h-[408px] border-[2px] border-[#D27700] rounded-r-[16px] rounded-l-[204px] shadow-lg">
               <div className="h-full flex flex-col justify-between">
                 <div>
                   {step === 3 ? (
                     <>
                       <Image
-                        className="absolute -right-5 top-4"
-                        src={RegisterGray} // تصویر جدید برای ثبت‌نام
+                        className="absolute -right-5 top-4 cursor-pointer"
+                        src={RegisterGray}
                         alt="Register"
                         width={101}
                         height={46}
+                        layout="intrinsic"
+                        priority
+                        placeholder="blur"
+                        onClick={() => setStep(0)}
                       />
                       <Image
-                        className="absolute -right-5 top-17"
-                        src={LoginBrown} // تصویر جدید برای ورود
+                        className="absolute -right-5 top-17 cursor-pointer"
+                        src={LoginBrown}
                         alt="Login"
                         width={101}
                         height={46}
+                        layout="intrinsic"
+                        priority
+                        placeholder="blur"
                       />
                     </>
                   ) : (
                     <>
-                      {/* تصاویر قبلی در مراحل دیگر */}
                       <Image
-                        className="absolute -right-5 top-4"
+                        className="absolute -right-5 top-4 cursor-pointer"
                         src={LoginGray}
                         alt="Register"
                         width={101}
                         height={46}
+                        layout="intrinsic"
+                        priority
+                        placeholder="blur"
+                        onClick={() => setStep(3)}
                       />
                       <Image
-                        className="absolute -right-5 top-17"
+                        className="absolute -right-5 top-17 cursor-pointer"
                         src={RegisterBrown}
                         alt="Login"
                         width={101}
                         height={46}
+                        layout="intrinsic"
+                        priority
+                        placeholder="blur"
                       />
                     </>
                   )}
@@ -284,7 +302,15 @@ export default function App() {
               </div>
 
               {step === 3 ? (
-                <Image src={Bayournt} alt="Register" width={40} height={33} />
+                <Image
+                  src={Bayournt}
+                  alt="Register"
+                  width={40}
+                  height={33}
+                  layout="intrinsic"
+                  priority
+                  placeholder="blur"
+                />
               ) : (
                 <VerticalStepper
                   currentStep={step}
