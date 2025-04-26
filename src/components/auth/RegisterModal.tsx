@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import VerticalStepper from "./Stepper";
 import RegisterBrown from "./../../assets/ModalRegister/Register-Brown.png";
@@ -11,15 +11,31 @@ import { HiEyeSlash } from "react-icons/hi2";
 import { IoEyeSharp } from "react-icons/io5";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
+import ReactDOM from "react-dom";
 
-export default function RegisterModal() {
-  const [isOpen, setIsOpen] = useState(false);
+export default function RegisterModal({ isOpen, setIsOpen }: any) {
   const [step, setStep] = useState(0);
 
   const nextStep = () => setStep((prev) => Math.min(prev + 1, 3));
 
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirm, setShowConfirm] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+  }, [isOpen]);
+
+  if (!mounted || !isOpen) return null;
 
   const validationSchema = Yup.object({
     email: Yup.string()
@@ -219,24 +235,12 @@ export default function RegisterModal() {
     }
   };
 
-  return (
+  return ReactDOM.createPortal(
     <>
-      <div className="flex flex-wrap gap-3">
-        <button
-          className="capitalize bg-yellow-500 text-white p-2 rounded"
-          onClick={() => {
-            setIsOpen(true);
-            setStep(0);
-          }}
-        >
-          opaque
-        </button>
-      </div>
-
       {isOpen && (
         <div
           onClick={() => setIsOpen(false)}
-          className="fixed inset-0 backdrop-blur-sm bg-black/20 flex justify-center items-center z-50"
+          className="fixed inset-0 backdrop-blur-xs bg-black/20 flex justify-center items-center z-50"
         >
           <div
             className="relative  p-8 w-[722px] h-[472px] border-[3px] backdrop-blur-xs   border-[#D27700] rounded-l-[16px] rounded-r-[230px] shadow-lg"
@@ -296,7 +300,7 @@ export default function RegisterModal() {
                   )}
                 </div>
                 <button
-                  onClick={() => setIsOpen(false)}
+                  onClick={() => setIsOpen(false)} 
                   className="cursor-pointer text-[#444444] text-lg font-medium self-center mb-2 
              relative pb-1 hover:after:scale-x-100 after:transition-transform after:duration-300
              after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] 
@@ -331,6 +335,7 @@ export default function RegisterModal() {
           </div>
         </div>
       )}
-    </>
+    </>,
+    document.body
   );
 }
