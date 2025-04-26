@@ -1,5 +1,5 @@
 import Header from "@/components/common/Header";
-import CustomSwiper from "@/components/Landing/CustomSwiper";
+import CustomSwiper from "@/components/Landing/Categories";
 import HeroSection from "@/components/Landing/HeroSection";
 
 export default function Home() {
