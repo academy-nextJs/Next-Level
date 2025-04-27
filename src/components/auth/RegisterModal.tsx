@@ -12,6 +12,7 @@ import { IoEyeSharp } from "react-icons/io5";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import ReactDOM from "react-dom";
+import { signIn } from "next-auth/react";
 
 export default function RegisterModal({ isOpen, setIsOpen }: any) {
   const [step, setStep] = useState(0);
@@ -164,8 +165,18 @@ export default function RegisterModal({ isOpen, setIsOpen }: any) {
             <Formik
               initialValues={{ email: "", password: "" }}
               validationSchema={validationSchema}
-              onSubmit={(values) => {
-                console.log("Values:", values);
+              onSubmit={async (values) => {
+                const res = await signIn("credentials", {
+                  email: values.email,
+                  password: values.password,
+                  redirect: false,
+                });
+
+                if (res?.ok) {
+                  setIsOpen(false);
+                } else {
+                  console.log("Login error", res?.error);
+                }
               }}
             >
               {({ errors, touched }) => (
@@ -300,7 +311,7 @@ export default function RegisterModal({ isOpen, setIsOpen }: any) {
                   )}
                 </div>
                 <button
-                  onClick={() => setIsOpen(false)} 
+                  onClick={() => setIsOpen(false)}
                   className="cursor-pointer text-[#444444] text-lg font-medium self-center mb-2 
              relative pb-1 hover:after:scale-x-100 after:transition-transform after:duration-300
              after:absolute after:bottom-0 after:left-0 after:w-full after:h-[2px] 

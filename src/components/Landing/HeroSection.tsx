@@ -14,7 +14,7 @@ const animals = [
 
 export default function HeroSection() {
   return (
-    <div className="lg:mx-24">
+    <div className="lg:mx-24 ">
       {/* Hero Section */}
       <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 ">
         <motion.div
@@ -27,7 +27,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-2xl lg:text-3xl xl:text-4xl font-semibold"
+            className="text-2xl lg:text-3xl xl:text-4xl font-semibold dark:text-amber-100"
           >
             یه انتخاب ساده ، یه جای راحت!
           </motion.p>
@@ -36,7 +36,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.8 }}
-            className="text-md md:text-lg xl:text-xl mt-4"
+            className="text-md md:text-lg xl:text-xl mt-4 dark:text-amber-200"
           >
             رزرو ، رهن ، اجاره و حتی خرید و فروش ملک مورد نظرتون مثل آب خوردن با
             <span>
@@ -80,7 +80,7 @@ export default function HeroSection() {
           </div>
 
           {/* Search Form */}
-          <div className="relative bg-[#FFFBF5] translate-x-7 drop-shadow-lg rounded-l-md rounded-r-full w-full z-10 px-8 py-4">
+          <div className="relative bg-[#FFFBF5] dark:bg-gray-800 dark:text-white translate-x-7 drop-shadow-lg rounded-l-md rounded-r-full w-full z-10 px-8 py-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
               <div className="flex flex-col gap-2 max-w-xs">
                 <label
@@ -98,7 +98,7 @@ export default function HeroSection() {
                   variant="bordered"
                 >
                   {animals.map((animal) => (
-                    <SelectItem key={animal.key}>{animal.label}</SelectItem>
+                    <SelectItem className="dark:text-amber-100" key={animal.key}>{animal.label}</SelectItem>
                   ))}
                 </Select>
               </div>
@@ -119,7 +119,7 @@ export default function HeroSection() {
                   variant="bordered"
                 />
                 {animals.map((animal) => (
-                  <SelectItem key={animal.key}>{animal.label}</SelectItem>
+                  <SelectItem className="dark:text-amber-100" key={animal.key}>{animal.label}</SelectItem>
                 ))}
               </div>
 
@@ -139,7 +139,7 @@ export default function HeroSection() {
                   variant="bordered"
                 >
                   {animals.map((animal) => (
-                    <SelectItem key={animal.key}>{animal.label}</SelectItem>
+                    <SelectItem className="dark:text-amber-100" key={animal.key}>{animal.label}</SelectItem>
                   ))}
                 </Select>
               </div>
@@ -159,7 +159,7 @@ export default function HeroSection() {
                   variant="bordered"
                 >
                   {animals.map((animal) => (
-                    <SelectItem key={animal.key}>{animal.label}</SelectItem>
+                    <SelectItem className="dark:text-amber-100" key={animal.key}>{animal.label}</SelectItem>
                   ))}
                 </Select>
               </div>
