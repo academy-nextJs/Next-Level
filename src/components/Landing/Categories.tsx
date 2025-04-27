@@ -1,14 +1,16 @@
 "use client";
 
 import { useState } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
 import Image from "next/image";
 import { IoIosArrowRoundBack, IoIosArrowRoundForward } from "react-icons/io";
-import "swiper/css/pagination";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import { Autoplay } from "swiper/modules";
+import "swiper/css/pagination";
+import "swiper/css";
+import "swiper/css/navigation";
+
 import boat from "./../../assets/Landing/boat.png";
 import condo from "./../../assets/Landing//condo.png";
 import cottage from "./../../assets/Landing//cottage.png";
@@ -32,11 +34,11 @@ export default function CustomSwiper() {
   return (
     <div className="w-full px-4 py-8 relative">
       {/* Buttons */}
-      <button className="custom-prev absolute top-1/2 -translate-y-1/2 -right-4 z-10 bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-300 transition">
-        <IoIosArrowRoundForward />
+      <button className="custom-prev absolute top-1/2 -translate-y-1/2 -right-4 z-10 bg-gray-200 dark:bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-300 transition">
+        <IoIosArrowRoundForward  className="dark:text-amber-100" size={25}/>
       </button>
-      <button className="custom-next absolute top-1/2 -translate-y-1/2 -left-4 z-10 bg-gray-200 w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-300 transition">
-        <IoIosArrowRoundBack />
+      <button className="custom-next absolute top-1/2 -translate-y-1/2 -left-4 z-10 bg-gray-200 dark:bg-gray-800 w-10 h-10 rounded-full flex items-center justify-center shadow-md hover:bg-gray-300 transition">
+        <IoIosArrowRoundBack className="dark:text-amber-100" size={25}/>
       </button>
 
       <Swiper
@@ -67,7 +69,7 @@ export default function CustomSwiper() {
                 className={`
                   aspect-square w-[160px] mx-auto
                   drop-shadow group relative flex flex-col items-center justify-center 
-                  rounded-2xl bg-white cursor-pointer transition-all
+                  rounded-2xl bg-white dark:bg-gray-800   cursor-pointer transition-all
                   border-r-4 ${
                     isActive ? "border-yellow-400" : "border-transparent"
                   }
@@ -97,7 +99,7 @@ export default function CustomSwiper() {
                     height={40}
                   />
                 </div>
-                <p className="mt-2 text-sm font-bold text-gray-700">
+                <p className="mt-2 text-sm font-bold text-gray-700 dark:text-amber-100 " >
                   {card.title}
                 </p>
               </div>

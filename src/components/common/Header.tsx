@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -18,6 +18,9 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import logo from "./../../assets/Landing/logo.png";
 import RegisterModal from "../auth/RegisterModal";
+import { customLogout } from "@/logout";
+import { signOut, useSession } from "next-auth/react";
+import { ThemeSwitcher } from "@/context/ThemeSwitcher";
 
 export default function Header() {
   const pathname = usePathname();
@@ -38,6 +41,16 @@ export default function Header() {
 
   const currentPath = isMounted ? pathname : "";
 
+  const { data: session } = useSession();
+  console.log("Log session: ", session);
+
+  const handleLogout = useCallback(async () => {
+    if (session?.refreshToken) {
+      await customLogout(session.refreshToken);
+    } else {
+      await signOut();
+    }
+  }, [session]);
   return (
     <Navbar isMenuOpen={isMenuOpen} onMenuOpenChange={setIsMenuOpen}>
       <NavbarContent justify="start">
@@ -54,7 +67,7 @@ export default function Header() {
       </NavbarContent>
 
       <NavbarContent className="sm:hidden" justify="end">
-        <NavbarMenuToggle
+        <NavbarMenuToggle className="dark:text-white" 
           aria-label={isMenuOpen ? "Close menu" : "Open menu"}
         />
       </NavbarContent>
@@ -63,7 +76,7 @@ export default function Header() {
         {navItems.map((item, index) => (
           <NavbarItem
             key={item.href}
-            className="relative flex items-center group"
+            className="relative flex items-center group gap-2"
           >
             <Link
               href={item.href}
@@ -78,7 +91,7 @@ export default function Header() {
                   : "text-gray-700 hover:text-amber-600"
               )}
             >
-              <span className="relative z-10">{item.label}</span>
+              <span className="relative z-10 dark:text-white">{item.label}</span>
               <span className="absolute -bottom-1 left-0 w-full h-[2px] bg-amber-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </Link>
 
@@ -88,7 +101,7 @@ export default function Header() {
                 "w-2 h-2 rounded-full transition-all duration-300",
                 "shadow-[0_0_8px_rgba(251,191,36,0.3)]",
                 currentPath === item.href
-                  ? "bg-amber-500 animate-pulse-scale"
+                  ? "bg-amber-500 animate-pulse-scale "
                   : "bg-transparent"
               )}
             />
@@ -103,21 +116,35 @@ export default function Header() {
       </NavbarContent>
 
       <NavbarContent className="hidden md:flex" justify="end">
-        <NavbarItem className="border-1.5 border-amber-700 px-2 py-1 rounded-xl">
-          <button
-            onClick={() => setIsModalOpen(true)}
-            className="text-[#543000] flex gap-1.5 text-lg cursor-pointer"
-          >
-            ثبت نام / ورود <HiOutlineUser size={25} />
-          </button>
+        <NavbarItem >
+        <ThemeSwitcher />
         </NavbarItem>
+        {session?.accessToken ? (
+          <NavbarItem className="border-1.5 border-amber-700 px-2 py-1 rounded-xl">
+            <button
+              onClick={handleLogout}
+              className="text-[#543000] flex gap-1.5 text-lg cursor-pointer"
+            >
+              خروج <HiOutlineUser size={25} />
+            </button>
+          </NavbarItem>
+        ) : (
+          <NavbarItem className="border-1.5 border-amber-700 px-2 py-1 rounded-xl">
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="text-[#543000] dark:text-white flex gap-1.5 text-lg cursor-pointer"
+            >
+              ثبت نام / ورود <HiOutlineUser size={25} />
+            </button>
+          </NavbarItem>
+        )}
       </NavbarContent>
       <RegisterModal isOpen={isModalOpen} setIsOpen={setIsModalOpen} />
-      <NavbarMenu>
+      <NavbarMenu >
         {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
+          <NavbarMenuItem  key={`${item}-${index}`}>
             <Link
-              className="w-full"
+              className="w-full "
               color={
                 index === 2
                   ? "warning"
