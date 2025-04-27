@@ -62,5 +62,19 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       session.refreshToken = token.refreshToken as string;
       return session;
     },
+    async authorized({ auth, request }: any) {
+      const isAuthorized = !!auth?.accessToken;
+      const privateRoutes = ["/about", "/users"];
+
+      const isPrivateRoute = privateRoutes.some((route) =>
+        request.nextUrl.pathname.startsWith(route)
+      );
+
+      if (isPrivateRoute && !isAuthorized) {
+        return Response.redirect(new URL("/", request.nextUrl.origin));
+      }
+
+      return true;
+    },
   },
 });
