@@ -6,7 +6,7 @@ import LoginGray from "./../../assets/ModalRegister/Login-Gray.png";
 import Bayournt from "./../../assets/ModalRegister/Bayournt1.png";
 import LoginBrown from "./../../assets/ModalRegister/Login-Brown.png";
 import RegisterGray from "./../../assets/ModalRegister/Register-Gray.png";
-import { InputOtp } from "@heroui/react";
+import { InputOtp, Spinner } from "@heroui/react";
 import { HiEyeSlash } from "react-icons/hi2";
 import { IoEyeSharp } from "react-icons/io5";
 import { ErrorMessage, Field, Form, Formik } from "formik";
@@ -165,7 +165,7 @@ export default function RegisterModal({ isOpen, setIsOpen }: any) {
             <Formik
               initialValues={{ email: "", password: "" }}
               validationSchema={validationSchema}
-              onSubmit={async (values) => {
+              onSubmit={async (values, { setSubmitting }) => {
                 const res = await signIn("credentials", {
                   email: values.email,
                   password: values.password,
@@ -177,9 +177,10 @@ export default function RegisterModal({ isOpen, setIsOpen }: any) {
                 } else {
                   console.log("Login error", res?.error);
                 }
+                setSubmitting(false);
               }}
             >
-              {({ errors, touched }) => (
+              {({ errors, touched, isSubmitting }) => (
                 <Form className="flex flex-col gap-4 w-[300px]">
                   <div className="flex flex-col text-right">
                     <label className="text-[#D27700] font-bold mb-1">
@@ -231,9 +232,14 @@ export default function RegisterModal({ isOpen, setIsOpen }: any) {
 
                   <button
                     type="submit"
-                    className="bg-gradient-to-r from-[#E89300] to-[#FFB84D] cursor-pointer w-full h-[40px] text-white rounded-xl shadow-lg hover:shadow-2xl hover:bg-gradient-to-r hover:from-[#FFB84D] hover:to-[#E89300] transition-all duration-500 transform hover:scale-100 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-[#E89300] focus:ring-opacity-50"
+                    disabled={isSubmitting}
+                    className="bg-gradient-to-r from-[#E89300] to-[#FFB84D] cursor-pointer w-full h-[40px] text-white rounded-xl shadow-lg hover:shadow-2xl hover:bg-gradient-to-r hover:from-[#FFB84D] hover:to-[#E89300] transition-all duration-500 transform hover:scale-100 disabled:opacity-50 focus:outline-none focus:ring-2 focus:ring-[#E89300] focus:ring-opacity-50 flex items-center justify-center"
                   >
-                    ورود
+                    {isSubmitting ? (
+                      <Spinner size="lg" variant="wave" />
+                    ) : (
+                      "ورود"
+                    )}
                   </button>
                 </Form>
               )}
