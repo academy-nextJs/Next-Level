@@ -10,6 +10,6 @@ export const customLogout = async (refreshToken: string) => {
   } catch (err) {
     console.error("❌ Logout API error:", err);
   } finally {
-    await signOut({ callbackUrl: "/login", redirect: true });
+    await signOut({ redirect: true });
   }
 };
