@@ -27,6 +27,7 @@ const cards = [
   { title: "آپارتمان", img: condo },
   { title: "آپارتمان", img: condo },
 ];
+//
 
 export default function CustomSwiper() {
   const [selected, setSelected] = useState<string | null>(null);
