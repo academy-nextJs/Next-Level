@@ -1,3 +1,4 @@
+"use client";
 import React from 'react'
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa";
@@ -8,6 +9,7 @@ import samandehi from "../assets/samandehi-qsyjhvdpkg3mrncpddhc1pydnd5299bemn3wo
 import enamad from "../assets/enamad-qsyjhvdpkg3mrncpddhc1pydnd5299bemn3wof7no2 1.svg"
 import eteh from "../assets/eteh-qsyjhvdpkg3mrncpddhc1pydnd5299bemn3wof7no2 1.svg"
 import AsProfile from "../assets/AS-67207980 1.svg"
+import AsProfile2 from "../assets/AS-67207980 1 (1).svg"
 import Rectangle from "../assets/Rectangle 30.svg"
 import Logo from "../assets/Logo - Name.svg"
 
@@ -23,33 +25,35 @@ import 'swiper/css';
 const Landingfooter = () => {
   return (
     <>
-    <div className=' bg-white border-[1px] flex flex-col mx-auto text-right w-[375px] h-[900px]'>
+    <div className='bg-white border-[1px] flex flex-col mx-auto text-right w-full h-[1200px]'>
 
-        <div className='text-[#444] text-right leading-6 pt-4 '>
+        <div className='text-[#444] text-right leading-6 pt-4'>
 
-        <div className='flex text-lg text-nowrap '>
+        <div className='flex justify-end text-3xl text-nowrap pr-36 pt-4'>
         <h2 className='text-[#D27700]'>بزرگترین مرجع خرید و فروش و اجاره ملک در کشور</h2>
-        <h1 className='text-[#444] pl-0.5'>بایورنت</h1>
+        <h1 className='text-[#444] pl-2'>بایورنت</h1>
         </div>
-
-        <p className='pt-8 text-[13px] px-3 text-justify rtl'>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. </p>
-
-        <button className='bg-[#E89300] h-8 w-full mt-4 text-white rounded-lg '>درباره بایورنت</button>
-
-        <div className='bg-white w-[360px] h-[235px] mt-6 shadow-2xl rounded-2xl'>
+<div className='flex justify-around'>
+        <div className='bg-white w-1/3 h-[340px] mt-18 shadow-2xl rounded-2xl'>
             <Image
              className= "dark:invert"
             src={Rectangle}
             alt=""
-            width={350}
-            height={50}
+            width={530}
+            height={110}
             priority
             />
         </div>
+
+        <p className='w-1/3 pt-32 text-xl px-3 text-justify rtl'>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. کتابهای زیادی در شصت و سه درصد گذشته، حال و آینده شناخت فراوان جامعه و متخصصان را می طلبد تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان خلاقی و فرهنگ پیشرو در زبان فارسی ایجاد کرد. </p>
+
+        </div>
+        <button className='bg-[#E89300] h-8 w-32 mr-[500px] text-white rounded-lg '>درباره بایورنت</button>
         
-        <div className='flex pt-9'>
-        <h4 className='text-[#9A815F] text-[12px] text-nowrap pt-1 pr-1'>! بدی های ما رو به ما بگید خوبی های ما رو به دیگران</h4>
-        <h3 className='text-[#D27700] text-lg text-nowrap'>بایورنت از نگاه مشتریان</h3>
+        
+        <div className='flex justify-end pt-32 pr-36'>
+        <h4 className='text-[#9A815F] text-md text-nowrap pt-2 pr-2'>! بدی های ما رو به ما بگید خوبی های ما رو به دیگران</h4>
+        <h3 className='text-[#D27700] text-3xl text-nowrap'>بایورنت از نگاه مشتریان</h3>
         </div>
 
         <Swiper
@@ -59,39 +63,73 @@ const Landingfooter = () => {
         mousewheel={true}
         keyboard={true}
         modules={[Navigation, Pagination, Mousewheel, Keyboard]}
-        className="mySwiper"
+        className="mySwiper w-full h-96"
       >
-        <SwiperSlide>        <div className='w-[350px] mx-auto mt-8 flex rtl justify-between'>
+        <SwiperSlide>    <div className='border-[1px] w-full h-96 mt-2 flex justify-around'>
+          <div className='w-[554px] h-[230px] border-[1px] mt-20 ml-12 flex justify-end gap-5'>
+            <div>
+              <div className='w-[250px] flex justify-between pt-3'>
+                <p className='text-lg text-[#777777]'>*****</p>
 
-<div>
-  <div className='w-[220px] flex text-nowrap justify-between pt-2'>
-    <p>*****</p>
+                <h1 className='text-lg'>مهرداد مشکور</h1>
+              </div>
 
-    <h1 className='text-[#777777]'>مهرداد مشکور</h1>
-  </div>
+              <div className='w-[250px] flex justify-between pt-3'>
+                <p className='text-[#777777] text-[12px]'>1403/12/06</p>
 
-  <div className='w-[220px] flex text-nowrap justify-between pt-2'>
-    <p className='text-[14px] text-[#777777]'>1403/12/06</p>
+                <h2 className='text-[#777777]'>پزشک</h2>
+              </div>
 
-    <h2 className='text-[#777777]'>پزشک</h2>
-  </div>
+              <div className='w-[250px] pt-5 text-justify'>
+                <h3 className='text-[#777777] text-[14px]'>ترانسفر اوکی پذیرش اوکی سوییت چهار تخته سه شب اجاره کردیم سوییت تمیز و قابل قبول بود چایی ساز داشت محوطه هتل هم بسیار خوب و زیبا بود.            </h3>
+              </div>
+            </div>
 
-  <div className='w-[220px] flex text-wrap text-justify justify-between pt-1'>
-    <h3 className='text-[#777777] text-[12px] px-2'>ترانسفر اوکی پذیرش اوکی سوییت چهار تخته سه شب اجاره کردیم سوییت تمیز و قابل قبول بود چایی ساز داشت محوطه هتل هم بسیار خوب و زیبا بود.            </h3>
-  </div>
-</div>
+            <div>
+            <Image
+             className= ""
+            src={AsProfile}
+            alt=""
+            width={230}
+            height={230}
+            priority
+            />
+            </div>
+          </div>
 
-<div>
-<Image
-   className= "pt-2"
-  src={AsProfile}
-  alt=""
-  width={130}
-  height={130}
-  priority
-  />
-</div>
-</div></SwiperSlide>
+          <div className='w-[554px] h-[230px] border-[1px] mt-20 ml-12 flex justify-end gap-5'>
+            <div>
+              <div className='w-[250px] flex justify-between pt-3'>
+                <p className='text-lg text-[#777777]'>*****</p>
+
+                <h1 className='text-lg'>مریم طبتی</h1>
+              </div>
+
+              <div className='w-[250px] flex justify-between pt-3'>
+                <p className='text-[#777777] text-[12px]'>1403/12/06</p>
+
+                <h2 className='text-[#777777]'>تاجر</h2>
+              </div>
+
+              <div className='w-[250px] pt-5 text-justify'>
+                <h3 className='text-[#777777] text-[14px]'>ترانسفر اوکی پذیرش اوکی سوییت چهار تخته سه شب اجاره کردیم سوییت تمیز و قابل قبول بود چایی ساز داشت محوطه هتل هم بسیار خوب و زیبا بود.            </h3>
+              </div>
+            </div>
+
+            <div>
+            <Image
+             className= ""
+            src={AsProfile2}
+            alt=""
+            width={230}
+            height={230}
+            priority
+            />
+            </div>
+          </div>
+          
+          </div>    
+</SwiperSlide>
         <SwiperSlide>Slide 2</SwiperSlide>
         <SwiperSlide>Slide 3</SwiperSlide>
         <SwiperSlide>Slide 4</SwiperSlide>
@@ -106,10 +144,10 @@ const Landingfooter = () => {
       
     </div>
 
-    <div className='w-[375px] h-[990px] border-[1px] bg-white flex flex-col m-auto'>
-      <div className='w-[300px] h-[850px] ml-10 border-2 border-[#A85F00] rounded-b-[20px] rounded-t-[190px]'>
+    <div className='w-full h-[350px] border-[1px] bg-white flex justify-center'>
+      <div className='w-[1128px] h-[274px] flex justify-end border-2 border-[#A85F00] rounded-l-[20px] rounded-r-[190px]'>
       <Image
-             className= "dark:invert mt-10 ml-24"
+             className= ""
             src={Logo}
             alt=""
             width={118}
@@ -118,32 +156,20 @@ const Landingfooter = () => {
             />
       </div>
       
-      <div className='w-[250px] h-[780px] flex flex-col bg-[#FFEFD9] rounded-t-[20px] rounded-b-[162px] absolute ml-16 mt-48'>
+      <div className='w-[996px] h-[238px] flex bg-[#FFEFD9] rounded-r-[20px] rounded-l-[162px] absolute left-18 mt-5'>
 
-          <div className='text-right'>
-          <h1 className='text-black text-lg pr-4 pt-2'>مختصری از بایورنت</h1>
-          <h2 className='text-[#737373] text-[12px] text-balance text-justify px-2'>لورم ایپسوم  تولید  نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. </h2>
+      <div className='w-1/6'>
+        <FaTelegramPlane className='ml-15 mt-6' size={30} />
+        <FaInstagram className='ml-6 mt-6' size={30} />
+        <SiAparat className='ml-6 mt-7' size={30} />
+        <FaLinkedinIn className='ml-18 mt-6' size={30} />
+        </div>
+
+          <div className='w-1/6 text-center my-auto pr-10'>
+          <h5 className='text-black text-lg'>ما را دنبال کنید</h5>
           </div>
 
-          <div className='text-right leading-7'>
-          <h3 className='text-black text-lg pr-4 pt-2'>لینک های مفید</h3>
-          <p className='text-[#737373] text-[12px] px-2'>درباره ما</p>
-          <p className='text-[#737373] text-[12px] px-2'>شرایط و ظوابط</p>
-          <p className='text-[#737373] text-[12px] px-2'>راهنمای کاربران</p>
-          <p className='text-[#737373] text-[12px] px-2'>پشتیبانی</p>
-          <p className='text-[#737373] text-[12px] px-2'>اخبار و مقالات</p>
-          </div>
-
-          <div className='text-right leading-7'>
-          <h4 className='text-black text-lg pr-4 pt-2'>تماس با ما</h4>
-          <p className='text-[#737373] text-[12px] px-2'>مرکز پیام</p>
-          <p className='text-[#737373] text-[12px] px-2'>دفتر مرکزی</p>
-          <p className='text-[#737373] text-[12px] px-2'>مدیر شعبات</p>
-          <p className='text-[#737373] text-[12px] px-2'>info@buyorent.com</p>
-          <p className='text-[#737373] text-[12px] px-2'>021-22556256</p>
-          </div>
-
-          <div className='flex justify-around pt-5'>
+          <div className='w-1/6 flex flex-col justify-around'>
           <Image
              className= ""
             src={enamad}
@@ -170,17 +196,28 @@ const Landingfooter = () => {
             />
           </div>
 
-          <div className='text-center pt-10'>
-          <h5 className='text-black text-lg'>ما را دنبال کنید</h5>
+          <div className='w-1/6 text-right pr-20 leading-7'>
+          <h4 className='text-black text-lg pt-4'>تماس با ما</h4>
+          <p className='text-[#737373] text-[12px]'>مرکز پیام</p>
+          <p className='text-[#737373] text-[12px]'>دفتر مرکزی</p>
+          <p className='text-[#737373] text-[12px]'>مدیر شعبات</p>
+          <p className='text-[#737373] text-[12px]'>info@buyorent.com</p>
+          <p className='text-[#737373] text-[12px]'>021-22556256</p>
           </div>
 
-      <div className=''>
-        <FaTelegramPlane className='ml-6 mt-11' size={30} />
-        <FaInstagram className='ml-18 mt-6' size={30} />
-        <SiAparat className='ml-36 mt-[-2rem]' size={30} />
-        <FaLinkedinIn className='ml-52 mt-[-5rem]' size={30} />
-        </div>
+          <div className='w-1/6 text-right pr-20 leading-7'>
+          <h3 className='text-black text-lg pt-4'>لینک های مفید</h3>
+          <p className='text-[#737373] text-[12px]'>درباره ما</p>
+          <p className='text-[#737373] text-[12px]'>شرایط و ظوابط</p>
+          <p className='text-[#737373] text-[12px]'>راهنمای کاربران</p>
+          <p className='text-[#737373] text-[12px]'>پشتیبانی</p>
+          <p className='text-[#737373] text-[12px]'>اخبار و مقالات</p>
+          </div>
 
+          <div className='w-1/6 text-right pr-6'>
+          <h1 className='text-black text-lg pt-4'>مختصری از بایورنت</h1>
+          <h2 className='text-[#737373] text-[12px] text-balance text-justify pt-2'>لورم ایپسوم  تولید  نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است و برای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد. </h2>
+          </div>
       </div>
 
     </div>
