@@ -10,7 +10,7 @@ import { unstable_cache } from "next/cache";
 
 type ErrorType = Error;
 
-// GET Hook
+//// GET Hook
 export const useGet = <T>(
   url: string,
   queryKey: any[],
