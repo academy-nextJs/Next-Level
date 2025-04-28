@@ -76,7 +76,6 @@ const LandinCenter = () => {
             pagination={true}
             mousewheel={true}
             keyboard={true}
-            slidesPerView={4}
             breakpoints={{
               0: { slidesPerView: 1 },
               640: { slidesPerView: 2 },
