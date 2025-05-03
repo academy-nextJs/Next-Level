@@ -1,194 +1,433 @@
-"use client"
-import { Button, Input, Modal, ModalBody, ModalContent, ModalFooter, ModalHeader, Pagination, Select, useDisclosure } from "@heroui/react";
+"use client";
+import {
+  Button,
+  Input,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  Pagination,
+  Select,
+  SelectItem,
+  Slider,
+  useDisclosure,
+} from "@heroui/react";
 import Image from "next/image";
-import React from "react";
-import image4 from "./../../../assets/image4.png"
+import React, { useState } from "react";
+import image4 from "./../../../assets/image4.png";
 import { RiMenuSearchLine } from "react-icons/ri";
-
-
+import {
+  MdOutlineBedroomParent,
+  MdOutlineBathroom,
+  MdCarRepair,
+} from "react-icons/md";
+import { FiFilter } from "react-icons/fi";
+import { IoLocationOutline } from "react-icons/io5";
 
 const RentPage = () => {
-  const {isOpen, onOpen, onOpenChange} = useDisclosure();
-  const properties = Array.from({ length: 9 }, (_, index) => ({
-    id: index + 1,
-    title: "آپارتمان لوکس زعفرانیه",
-    location: "تهران · زعفرانیه",
-    price: "۱۵,۰۰۰,۰۰۰ تومان",
-    oldPrice: "۱۶,۵۰۰,۰۰۰ تومان",
-    discount: "۱۵٪ ",
-    imageUrl: image4,
-  }));
-  
-  return (
-    <> 
-    <div className=" mt-40 mr-36 gap-2 flex">
-    <p className=" text-3xl" >رهن و اجاره آپارتمان</p>
-    <p className="bg-[#586CFF] rounded-3xl w-20 h-10 text-center text-[#fff]  text-2xl" > رشت </p>
-    </div>
-   
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const properties = [
+    {
+      id: 1,
+      title: "آپارتمان لوکس زعفرانیه",
+      location: "تهران · زعفرانیه",
+      price: "۱۵,۰۰۰,۰۰۰",
+      oldPrice: "۱۶,۵۰۰,۰۰۰",
+      discount: "۱۵٪",
+      imageUrl: image4,
+    },
+    {
+      id: 2,
+      title: "واحد مبله در شهرک غرب",
+      location: "تهران · شهرک غرب",
+      price: "۱۸,۵۰۰,۰۰۰",
+      oldPrice: "۲۰,۰۰۰,۰۰۰",
+      discount: "۸٪",
+      imageUrl: image4,
+    },
+    {
+      id: 3,
+      title: "خانه ویلایی در لواسان",
+      location: "لواسان · مرکز شهر",
+      price: "۲۵,۰۰۰,۰۰۰",
+      oldPrice: "۲۸,۰۰۰,۰۰۰",
+      discount: "۱۰٪",
+      imageUrl: image4,
+    },
+    {
+      id: 4,
+      title: "آپارتمان نوساز در سعادت‌آباد",
+      location: "تهران · سعادت‌آباد",
+      price: "۱۲,۰۰۰,۰۰۰",
+      oldPrice: "۱۳,۰۰۰,۰۰۰",
+      discount: "۷٪",
+      imageUrl: image4,
+    },
+    {
+      id: 5,
+      title: "سوئیت دانشجویی در انقلاب",
+      location: "تهران · میدان انقلاب",
+      price: "۸,۰۰۰,۰۰۰",
+      oldPrice: "۸,۵۰۰,۰۰۰",
+      discount: "۶٪",
+      imageUrl: image4,
+    },
+    {
+      id: 6,
+      title: "آپارتمان اقتصادی در افسریه",
+      location: "تهران · افسریه",
+      price: "۶,۵۰۰,۰۰۰",
+      oldPrice: "۷,۵۰۰,۰۰۰",
+      discount: "۱۳٪",
+      imageUrl: image4,
+    },
+    {
+      id: 7,
+      title: "خانه دوبلکس در نیاوران",
+      location: "تهران · نیاوران",
+      price: "۳۰,۰۰۰,۰۰۰",
+      oldPrice: "۳۳,۰۰۰,۰۰۰",
+      discount: "۹٪",
+      imageUrl: image4,
+    },
+    {
+      id: 8,
+      title: "آپارتمان بازسازی‌شده در پونک",
+      location: "تهران · پونک",
+      price: "۱۰,۰۰۰,۰۰۰",
+      oldPrice: "۱۱,۰۰۰,۰۰۰",
+      discount: "۹٪",
+      imageUrl: image4,
+    },
+    {
+      id: 9,
+      title: "خانه حیاط‌دار در تجریش",
+      location: "تهران · تجریش",
+      price: "۱۶,۰۰۰,۰۰۰",
+      oldPrice: "۱۸,۰۰۰,۰۰۰",
+      discount: "۱۱٪",
+      imageUrl: image4,
+    },
+    {
+      id: 10,
+      title: "آپارتمان در بلوار فردوس",
+      location: "تهران · بلوار فردوس",
+      price: "۹,۵۰۰,۰۰۰",
+      oldPrice: "۱۰,۰۰۰,۰۰۰",
+      discount: "۵٪",
+      imageUrl: image4,
+    },
+    {
+      id: 11,
+      title: "واحد کوچک در جنت‌آباد",
+      location: "تهران · جنت‌آباد",
+      price: "۷,۰۰۰,۰۰۰",
+      oldPrice: "۸,۰۰۰,۰۰۰",
+      discount: "۱۲٪",
+      imageUrl: image4,
+    },
+    {
+      id: 12,
+      title: "واحد نقلی در نارمک",
+      location: "تهران · نارمک",
+      price: "۶,۰۰۰,۰۰۰",
+      oldPrice: "۶,۸۰۰,۰۰۰",
+      discount: "۱۱٪",
+      imageUrl: image4,
+    },
+  ];
 
-  <div className=" flex md:flex-row mt-14  text-lg gap-4 text-center text-[#272727] rounded-2xl">
-  <div className="relative flex mr-32 gap-10 ">
+  const [filter, setFilter] = useState("");
+
+  const filteredData = () =>
+    properties.filter(
+      (item) =>
+        item.title.toLowerCase().includes(filter.toLowerCase()) ||
+        item.location.toLowerCase().includes(filter.toLowerCase())
+    );
+
+  const destinations = [
+    { label: "تهران", value: "tehran" },
+    { label: "شیراز", value: "shiraz" },
+    { label: "اصفهان", value: "isfahan" },
+  ];
+
+  const sortOptions = [
+    { label: "بیشترین امتیاز", value: "rating" },
+    { label: "کمترین قیمت", value: "priceLow" },
+    { label: "بیشترین قیمت", value: "priceHigh" },
+  ];
+
+  const amenities = [
+    { label: "استخر", value: "pool" },
+    { label: "صبحانه رایگان", value: "breakfast" },
+    { label: "پارکینگ", value: "parking" },
+  ];
+
+  const ratings = [
+    { label: "۴.۵+", value: "4.5" },
+    { label: "۴.۰+", value: "4.0" },
+    { label: "۳.۵+", value: "3.5" },
+  ];
+
+  return (
+    <>
+      <div className="mt-20 gap-2 flex flex-col sm:flex-row sm:justify-start justify-center items-center max-w-screen-xl mx-auto px-4 text-center sm:text-right">
+        <p className="text-2xl sm:text-4xl font-bold">رهن و اجاره آپارتمان</p>
+        <p className="bg-[#e89300] rounded-2xl px-4 py-2 w-fit h-fit text-white font-bold text-xl sm:text-3xl mt-2 sm:mt-0">
+          رشت
+        </p>
+      </div>
+
+      <div className="flex flex-col justify-center gap-6 xl:flex-row md:justify-start md:items-center max-w-screen-xl mx-auto mt-14 text-[#272727] rounded-2xl px-4">
+        <div className="flex flex-col md:flex-row justify-center items-center gap-4 md:gap-10 w-full">
+          <div className="relative w-full md:w-[320px] max-w-md">
             <span className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400">
               <RiMenuSearchLine size={25} />
             </span>
             <input
               type="text"
+              value={filter}
+              onChange={(e) => setFilter(e.target.value)}
               placeholder="جستجو کنید..."
-              className="w-[20rem] p-3 pr-10 text-sm border  border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500"
- 
+              className="w-full p-3 pr-10 text-sm border dark:text-amber-100 dark:placeholder:text-amber-50 border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
-    
-  <Button
+          </div>
+
+          <Button
             onPress={onOpen}
-            className="text-xs cursor-pointe w-24 bg-[#586CFF] text-white p-4 rounded-2xl transition"
+            className="w-full md:w-24 text-sm bg-[#e89300] text-white p-3 rounded-2xl transition"
           >
             فیلترها
           </Button>
           <Modal
-        backdrop="opaque"
-        size="5xl"
-        classNames={{
-          backdrop: "bg-#FFFFFF from-zinc-900 to-zinc-900/10 backdrop-opacity-20",
-        }}
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-      >
-        <ModalContent>
-          {(onClose) => (
-            <>
-              <ModalHeader className="grid-cols-4 gap-1">Modal Title</ModalHeader>
-              <ModalBody>
-   
-              <div className="w-full flex flex-col gap-4">
-                <div className="flex flex-row justify-around">
-                <select className="w-52 border-1 " name="محل مورد نظر" id="">
-        <option value="">انتخاب کنید</option>
-        <option value=""></option>
-        <option value=""></option>
-       </select>
+            isOpen={isOpen}
+            size={"5xl"}
+            onOpenChange={onOpenChange}
+            scrollBehavior="inside"
+            backdrop="opaque"
+            classNames={{
+              backdrop:
+                "bg-gradient-to-t from-zinc-900 to-zinc-900/10 backdrop-opacity-20",
+            }}
+          >
+            <ModalContent className="z-[99999]">
+              {(onClose) => (
+                <>
+                  <ModalHeader className="text-lg font-semibold">
+                    فیلتر پیشرفته
+                  </ModalHeader>
+                  <ModalBody className="space-y-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium mb-1">
+                          محل مورد نظر
+                        </label>
+                        <Select placeholder="انتخاب مقصد" items={destinations}>
+                          {(item) => (
+                            <SelectItem key={item.value}>
+                              {item.label}
+                            </SelectItem>
+                          )}
+                        </Select>
+                      </div>
 
-       <select className="w-52 border-1 " name="محل مورد نظر" id="">
-       <option value="">انتخاب کنید</option>
-       <option value=""></option>
-        <option value=""></option>
-       </select>
+                      <div>
+                        <label className="block text-sm font-medium mb-1">
+                          نوع ملک
+                        </label>
+                        <Select placeholder="نوع مرتب‌سازی" items={sortOptions}>
+                          {(item) => (
+                            <SelectItem key={item.value}>
+                              {item.label}
+                            </SelectItem>
+                          )}
+                        </Select>
+                      </div>
 
-       <select className="w-52 border-1 " name="محل مورد نظر" id="">
-       <option value="">انتخاب کنید</option>
-       <option value=""></option>
-        <option value=""></option>
-       </select>
+                      <div>
+                        <label className="block text-sm font-medium mb-1">
+                          نوع معامله
+                        </label>
+                        <Select
+                          placeholder="انتخاب امکانات"
+                          items={amenities}
+                          selectionMode="multiple"
+                        >
+                          {(item) => (
+                            <SelectItem key={item.value}>
+                              {item.label}
+                            </SelectItem>
+                          )}
+                        </Select>
+                      </div>
 
-       
-       <select className="border-gray-500 w-52 border-1 h-fit" name="محل مورد نظر" id="">
-       <option value="">انتخاب کنید</option>
-       <option value=""></option>
-        <option value=""></option>
-       </select>
-       
-                </div>
-           
-        <div className="flex w-full flex-wrap md:flex-nowrap  md:mb-0 gap-4 mt-4 h-4">
-          
-          <Input label="وارد کنید" type="text" />
-          <Input label="وارد کنید" type="text" />
-          <Input label="وارد کنید" type="text" />
-          <Input label="وارد کنید" type="text" />
-         
+                      <div>
+                        <label className="block text-sm font-medium mb-1">
+                          نوع معامله
+                        </label>
+                        <Select placeholder="حداقل امتیاز" items={ratings}>
+                          {(item) => (
+                            <SelectItem key={item.value}>
+                              {item.label}
+                            </SelectItem>
+                          )}
+                        </Select>
+                      </div>
+                    </div>
+
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium mb-1">
+                          حداقل اجاره
+                        </label>
+                        <Input
+                          placeholder="مبلغ را وارد کنید..."
+                          type="number"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium mb-1">
+                          حداکثر اجاره
+                        </label>
+                        <Input
+                          placeholder="مبلغ را وارد کنید..."
+                          type="number"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium mb-1">
+                          حداقل اجاره
+                        </label>
+                        <Input
+                          placeholder="مبلغ را وارد کنید..."
+                          type="number"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium mb-1">
+                          حداکثر اجاره
+                        </label>
+                        <Input
+                          placeholder="مبلغ را وارد کنید..."
+                          type="number"
+                        />
+                      </div>
+                    </div>
+                  </ModalBody>
+
+                  <ModalFooter className="mt-4">
+                    <Button
+                      color="danger"
+                      variant="light"
+                      onPress={onClose}
+                      className="ml-2"
+                    >
+                      انصراف
+                    </Button>
+                    <Button
+                      className="bg-[#e89300]"
+                      onPress={onClose}
+                      startContent={<FiFilter className="text-lg" />}
+                    >
+                      اعمال فیلترها
+                    </Button>
+                  </ModalFooter>
+                </>
+              )}
+            </ModalContent>
+          </Modal>
         </div>
-    
-    </div>
-            
-                
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="light" onPress={onClose}>
-                  Close
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Action
-                </Button>
-              </ModalFooter>
-            </>
-          )}
-        </ModalContent>
-      </Modal>
+
+        <ul className="flex gap-3 md:gap-4 overflow-x-auto md:overflow-visible whitespace-nowrap md:px-0">
+          {[
+            "همه",
+            "محبوب ترین",
+            "ارزان ترین",
+            "گران ترین",
+            "عکس دار",
+            "پارکینگ دار",
+            "حیاط دار",
+          ].map((item, index) => (
+            <li
+              key={index}
+              className="flex-shrink-0 w-24 cursor-pointer dark:text-amber-50 hover:bg-[#e89300] text-center text-base border border-[#ccc] rounded-2xl py-2"
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
-  <h2 className="w-24 pt-2.5 mr-2  border-[1px] border-[#ccc] rounded-2xl text-center text-nowrap text-base  ">همه </h2>
-  <h2 className="w-24 pt-2.5  border-[1px] border-[#ccc] rounded-2xl text-center text-nowrap text-base  ">محبوب ترین</h2>
-  <h2 className="w-24 pt-2.5  border-[1px] border-[#ccc] rounded-2xl text-center text-nowrap text-base ">ارزان ترین</h2>
-  <h2 className="w-24 pt-2.5  border-[1px] border-[#ccc] rounded-2xl text-center text-nowrap text-base  ">گران ترین</h2>
-  <h2 className="w-24 pt-2.5  border-[1px] border-[#ccc] rounded-2xl text-center text-nowrap text-base  ">عکس دار</h2>
-  <h2 className="w-24 pt-2.5  border-[1px] border-[#ccc] rounded-2xl text-center text-nowrap text-base  ">پارکینگ دار</h2> 
-  <h2 className="w-24 pt-2.5  border-[1px] border-[#ccc] rounded-2xl text-center text-nowrap text-base  ">حیاط دار</h2> 
-  
-        </div>
 
- 
-  
- 
-    <div className="bg-white p-6 mt-14">
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-screen-xl mx-auto">
-        {properties.map((property) => (
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4 sm:px-6 md:px-8 border-t border-[#ccc] mt-6 pt-6 max-w-screen-xl mx-auto">
+        {filteredData().map((property: any) => (
           <div
             key={property.id}
-            className="bg-white rounded-lg shadow-lg overflow-hidden"
+            className="bg-white border border-[#EAEAEA] p-3 sm:p-4 cursor-pointer dark:bg-slate-900 rounded-3xl shadow-lg overflow-hidden transition hover:scale-[1.01]"
           >
-               <Image
-          className="ml-1.5 "
-          src={property.imageUrl}
-          alt=""
-          width={400}
-          height={300}
-          priority
-        />
-         
-            <div className="p-4 mr-6">
-              <h3 className="text-lg font-semibold text-gray-800">
+            <Image
+              className="rounded-3xl w-full h-auto object-cover"
+              src={property.imageUrl}
+              alt=""
+              width={400}
+              height={300}
+              priority
+            />
+
+            <div className="p-2 sm:p-4">
+              <h3 className="text-lg font-semibold dark:text-amber-200 text-gray-800">
                 {property.title}
               </h3>
-              <p className="text-sm text-gray-500">{property.location}</p>
-              <div className="flex space-x-4 my-4">
-                <div className="bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-xs">
-                  ۲ خواب
+
+              <p className="text-sm flex items-center gap-1 my-3 text-gray-500 dark:text-amber-100">
+                <IoLocationOutline size={22} className="dark:text-white" />
+                {property.location}
+              </p>
+
+              <div className="flex flex-wrap gap-2 border-t border-[#ccc] pt-2">
+                <div className="text-gray-700 dark:text-amber-50 flex items-center gap-1 py-1 px-3 rounded-full text-sm font-medium bg-gray-100 dark:bg-slate-800">
+                  <MdOutlineBedroomParent size={20} /> ۲ خواب
                 </div>
-                <div className="bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-xs">
-                  ۲ حمام
+                <div className="text-gray-700 dark:text-amber-50 flex items-center gap-1 py-1 px-3 rounded-full text-sm font-medium bg-gray-100 dark:bg-slate-800">
+                  <MdOutlineBathroom size={20} /> ۲ حمام
                 </div>
-                <div className="bg-gray-200 text-gray-700 py-1 px-3 rounded-full text-xs">
-                  پارکینگ
+                <div className="text-gray-700 dark:text-amber-50 flex items-center gap-1 py-1 px-3 rounded-full text-sm font-medium bg-gray-100 dark:bg-slate-800">
+                  <MdCarRepair size={20} /> پارکینگ
                 </div>
               </div>
-              <div className="flex items-center gap-6">
-                <span className="text-sm font-bold text-gray-500 line-through">
+
+              <div className="flex flex-wrap items-center gap-2 mt-4">
+                <span className="text-base sm:text-lg font-bold text-gray-500 line-through decoration-red-500">
                   {property.price}
                 </span>
-                <span className="text-xl text-gray-800 ">
-                  {property.oldPrice}
+                <span className="text-xs">تومان / </span>
+                <span className="text-base sm:text-xl font-bold text-gray-800 dark:text-[#c8ce8b]">
+                  {property.oldPrice} <span className="text-xs">تومان</span>
                 </span>
-                <div className="bg-red-500 text-sm text-white rounded-full w-8 text-center">
-                {property.discount}
+                <div className="bg-red-500 ml-auto text-sm font-bold px-3 py-1 text-white rounded-2xl">
+                  {property.discount}
+                </div>
               </div>
-              </div>
-            
             </div>
           </div>
         ))}
-        <div  dir="ltr" className=" ">
-
-        <Pagination className=" mt-7  "
-       color="warning" 
-        showControls initialPage={1} total={20} />
-        </div>
-       
       </div>
-     
-    </div>
-  
 
+      <div dir="ltr" className="w-full flex justify-center items-center mb-10">
+        <Pagination
+          className="mt-7"
+          color="warning"
+          showControls
+          initialPage={1}
+          total={20}
+        />
+      </div>
     </>
   );
 };
 
-export default RentPage
+export default RentPage;
