@@ -57,17 +57,45 @@ const RentPage = () => {
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalHeader className="flex flex-col gap-1">Modal Title</ModalHeader>
+              <ModalHeader className="grid-cols-4 gap-1">Modal Title</ModalHeader>
               <ModalBody>
+   
               <div className="w-full flex flex-col gap-4">
+                <div className="flex flex-row justify-around">
+                <select className="w-52 border-1 " name="محل مورد نظر" id="">
+        <option value="">انتخاب کنید</option>
+        <option value=""></option>
+        <option value=""></option>
+       </select>
 
-        <div className="flex w-full flex-wrap md:flex-nowrap mb-6 md:mb-0 gap-4">
+       <select className="w-52 border-1 " name="محل مورد نظر" id="">
+       <option value="">انتخاب کنید</option>
+       <option value=""></option>
+        <option value=""></option>
+       </select>
+
+       <select className="w-52 border-1 " name="محل مورد نظر" id="">
+       <option value="">انتخاب کنید</option>
+       <option value=""></option>
+        <option value=""></option>
+       </select>
+
        
+       <select className="border-gray-500 w-52 border-1 h-fit" name="محل مورد نظر" id="">
+       <option value="">انتخاب کنید</option>
+       <option value=""></option>
+        <option value=""></option>
+       </select>
+       
+                </div>
+           
+        <div className="flex w-full flex-wrap md:flex-nowrap  md:mb-0 gap-4 mt-4 h-4">
           
-          <Input label="Email" type="email" />
-          <Input label="Email" type="email" />
-          <Input label="Email" type="email" />
-          <Input label="Email" placeholder="Enter your email"  type="email" />
+          <Input label="وارد کنید" type="text" />
+          <Input label="وارد کنید" type="text" />
+          <Input label="وارد کنید" type="text" />
+          <Input label="وارد کنید" type="text" />
+         
         </div>
     
     </div>
