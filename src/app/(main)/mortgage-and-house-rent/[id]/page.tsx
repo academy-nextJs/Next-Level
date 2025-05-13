@@ -5,38 +5,16 @@ import CommentSingleHouses from "@/components/SingleHouses/Comments";
 import MapSingleReserve from "@/components/SingleHouses/Map";
 import HeaderSectionSingle from "@/components/SingleHouses/HeaderSection";
 import { useGet } from "@/utils/hooks/useReactQueryHooks";
-import { log } from "console";
 
-interface types {
-  id: string;
-  title: string;
-  address: string;
-  photos:string [] ;
-  rate:number;
-  price:number;
-  tags:string [];
-  bathrooms:number;
-  rooms:number;
-  capacity:number;
-  data:string
-}
-
-
-const SingleHouses = ({params}:{params:{id:string }}) => {
-
-
-  const { data, isLoading, error } = useGet<types[]>(
-    `/houses/${params.id}`,
-    
-    
-  );
+const SingleHouses = ({ params }: { params: { id: string } }) => {
+  const { data, isLoading, error } = useGet(`/houses/${params.id}`);
 
   if (isLoading) return <div>در حال بارگذاری...</div>;
   if (error) return <div>خطا در بارگذاری محصولات!</div>;
-  console.log(data);
-  
+  console.log("id:",data);
 
-  console.log("param" ,params.id);
+  console.log("param", params.id);
+  
 
   return (
     <>
@@ -45,7 +23,7 @@ const SingleHouses = ({params}:{params:{id:string }}) => {
       <div className="flex flex-col justify-center items-start lg:flex-row gap-8 my-16 px-10 md:px-20">
         {/* ستون راست */}
         <div className="w-full lg:w-1/2 space-y-6">
-          <DetailsLists data={data}  />
+          <DetailsLists data={data} />
         </div>
 
         {/* ستون چپ */}
@@ -106,7 +84,7 @@ const SingleHouses = ({params}:{params:{id:string }}) => {
           </div>
 
           {/* نظرات کاربران */}
-          <CommentSingleHouses />
+          <CommentSingleHouses houseId={params.id} />
         </div>
       </div>
     </>
