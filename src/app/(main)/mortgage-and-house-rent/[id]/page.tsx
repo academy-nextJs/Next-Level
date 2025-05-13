@@ -45,7 +45,7 @@ const SingleHouses = ({params}:{params:{id:string }}) => {
       <div className="flex flex-col justify-center items-start lg:flex-row gap-8 my-16 px-10 md:px-20">
         {/* ستون راست */}
         <div className="w-full lg:w-1/2 space-y-6">
-          <DetailsLists  />
+          <DetailsLists data={data}  />
         </div>
 
         {/* ستون چپ */}

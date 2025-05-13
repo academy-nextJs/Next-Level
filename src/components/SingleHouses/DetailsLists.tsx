@@ -3,7 +3,7 @@ import React from "react";
 import { FaPhoneVolume, FaHashtag } from "react-icons/fa";
 import image from "../../assets/Avatar2.png";
 
-const DetailsLists = () => {
+const DetailsLists = ({data}:any) => {
   return (
     <>
       <button className="text-lg font-bold border border-color2 px-4 py-2 rounded-full  text-color1">
