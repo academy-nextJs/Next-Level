@@ -13,11 +13,11 @@ const DetailsLists = ({data}:any) => {
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-x-4 gap-y-3 text-[16px] font-medium">
         <div className="flex flex-col pr-3 border-r-3 border-[#d27700]">
           <span className="text-[#d27700] dark:text-amber-400">تعداد خواب</span>
-          <span className="text-gray-800 dark:text-gray-100">۴ خواب</span>
+          <span className="text-gray-800 dark:text-gray-100"> {data.rooms} خواب </span>
         </div>
         <div className="flex flex-col pr-3 border-r-3 border-[#d27700]">
           <span className="text-[#d27700] dark:text-amber-400">اجاق گاز</span>
-          <span className="text-gray-800 dark:text-gray-100">دارد</span>
+          <span className="text-gray-800 dark:text-gray-100"> {data.bathrooms} </span>
         </div>
         <div className="flex flex-col pr-3 border-r-3 border-[#d27700]">
           <span className="text-[#d27700] dark:text-amber-400">بالکن</span>
@@ -38,8 +38,8 @@ const DetailsLists = ({data}:any) => {
           <span className="text-gray-800 dark:text-gray-100">نوساز</span>
         </div>
         <div className="flex flex-col pr-3 border-r-3 border-[#d27700]">
-          <span className="text-[#d27700] dark:text-amber-400">پارکینگ</span>
-          <span className="text-gray-800 dark:text-gray-100">دارد</span>
+          <span className="text-[#d27700] dark:text-amber-400"> پارکینگ</span>
+          <span className="text-gray-800 dark:text-gray-100">{data.parking} </span>
         </div>
         <div className="flex flex-col pr-3 border-r-3 border-[#d27700]">
           <span className="text-[#d27700] dark:text-amber-400">آسانسور</span>
@@ -61,7 +61,7 @@ const DetailsLists = ({data}:any) => {
             قیمت اجاره از
           </span>
           <span className="dark:text-gray-100 font-bold text-2xl text-[#1E1E1E]">
-            1،200،000،000{" "}
+            {data.price} {" "}
             <span className="text-[#595959] font-bold text-sm dark:text-amber-100">
               تومان
             </span>{" "}
@@ -73,7 +73,7 @@ const DetailsLists = ({data}:any) => {
             قیمت رهن از
           </span>
           <span className="dark:text-gray-100 font-bold text-2xl text-[#1E1E1E]">
-            1،200،000،000{" "}
+            {data.price} {" "}
             <span className="text-[#595959] font-bold text-sm dark:text-amber-100">
               تومان
             </span>{" "}
