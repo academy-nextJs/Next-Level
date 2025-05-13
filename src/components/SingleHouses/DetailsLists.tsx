@@ -17,7 +17,7 @@ const DetailsLists = ({data}:any) => {
         </div>
         <div className="flex flex-col pr-3 border-r-3 border-[#d27700]">
           <span className="text-[#d27700] dark:text-amber-400">اجاق گاز</span>
-          <span className="text-gray-800 dark:text-gray-100"> {data.bathrooms} </span>
+          <span className="text-gray-800 dark:text-gray-100"> دارد </span>
         </div>
         <div className="flex flex-col pr-3 border-r-3 border-[#d27700]">
           <span className="text-[#d27700] dark:text-amber-400">بالکن</span>
@@ -27,15 +27,15 @@ const DetailsLists = ({data}:any) => {
           <span className="text-[#d27700] dark:text-amber-400">
             سرویس ایرانی
           </span>
-          <span className="text-gray-800 dark:text-gray-100">کوار</span>
+          <span className="text-gray-800 dark:text-gray-100"> {data.bathrooms} </span>
         </div>
         <div className="flex flex-col pr-3 border-r-3 border-[#d27700]">
           <span className="text-[#d27700] dark:text-amber-400">نوع نما</span>
-          <span className="text-gray-800 dark:text-gray-100">رومی</span>
+          <span className="text-gray-800 dark:text-gray-100"> {data.categories.name} </span>
         </div>
         <div className="flex flex-col pr-3 border-r-3 border-[#d27700]">
-          <span className="text-[#d27700] dark:text-amber-400">نوع سازه</span>
-          <span className="text-gray-800 dark:text-gray-100">نوساز</span>
+          <span className="text-[#d27700] dark:text-amber-400">نوع حیاط</span>
+          <span className="text-gray-800 dark:text-gray-100"> {data.yard_type} </span>
         </div>
         <div className="flex flex-col pr-3 border-r-3 border-[#d27700]">
           <span className="text-[#d27700] dark:text-amber-400"> پارکینگ</span>
@@ -90,9 +90,9 @@ const DetailsLists = ({data}:any) => {
           />
           <div>
             <p className="text-lg font-medium text-gray-800 dark:text-gray-100">
-              عباس بهبودی
+              {data.sellerName} 
             </p>
-            <p className="text-medium font-normal">15 اردیبهشت 1404</p>
+            <p  className="text-medium font-normal"> {data.last_updated}  </p>
           </div>
         </div>
 
