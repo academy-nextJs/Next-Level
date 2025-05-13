@@ -80,7 +80,7 @@ const SingleHouses = ({params}:{params:{id:string }}) => {
             پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
           </p>
 
-          <MapSingleReserve />
+          <MapSingleReserve data={data} />
 
           <p className="text-gray-700 dark:text-amber-50 leading-7 text-medium font-medium text-justify">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
