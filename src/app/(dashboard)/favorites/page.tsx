@@ -55,7 +55,7 @@ export default function FavoritesPage() {
     () => [
       {
         accessorKey: "id",
-        header: "1ردیف",
+        header: "ردیف",
         cell: (info) => info.row.original.id,
         sortingFn: (rowA, rowB) => rowA.original.id - rowB.original.id,
       },
