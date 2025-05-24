@@ -139,7 +139,6 @@ export default function FavoritesPage() {
       title: "هتل سراوان",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 150000000,
-      guests: 88,
       image: image.src,
     },
     {
