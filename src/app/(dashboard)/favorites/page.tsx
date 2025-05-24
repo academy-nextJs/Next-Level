@@ -76,6 +76,7 @@ export default function FavoritesPage() {
         accessorKey: "title",
         header: "نام اقامتگاه",
         cell: (info) => info.getValue(),
+        enableSorting: true,
       },
      
       {
