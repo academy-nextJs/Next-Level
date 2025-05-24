@@ -169,7 +169,7 @@ export default function PaymentsPage() {
       title: "هتل سراوان",
       date: "1403/02/01/ 10:00",
       trackingNumber:"123456789123456",
-      price: 150000000,
+      price: 1500000000,
       guests: 88,
       status: "تایید شده",
       payment_status: "لغو شده",
