@@ -35,6 +35,7 @@ interface BookingData {
   id: number;
   title: string;
   date: string;
+  trackingNumber: string;
   price: number;
   guests: number;
   status: "تایید شده" | "در انتظار" | "لغو شده";
@@ -71,55 +72,27 @@ export default function PaymentsPage() {
           />
         ),
       },
-      {
-        accessorKey: "title",
-        header: "نام اقامتگاه",
-        cell: (info) => info.getValue(),
-        enableSorting: true,
-      },
+      
       {
         accessorKey: "date",
-        header: "تاریخ رزرو",
+        header: "تاریخ پرداخت",
+        enableSorting: false,
+      },
+      {
+        accessorKey: "trackingNumber",
+        header: "شماره پیگیری",
         enableSorting: false,
       },
       {
         accessorKey: "price",
-        header: "قیمت کل",
+        header: " مبلغ",
         cell: (info) => `${(+info.getValue()).toLocaleString()} تومان`,
         enableSorting: true,
         sortingFn: (rowA, rowB, columnId) =>
           (rowA.getValue(columnId) as number) -
           (rowB.getValue(columnId) as number),
       },
-      {
-        accessorKey: "guests",
-        header: "تعداد مسافر",
-        enableSorting: true,
-        sortingFn: (rowA, rowB, columnId) =>
-          (rowA.getValue(columnId) as number) -
-          (rowB.getValue(columnId) as number),
-      },
-      {
-        accessorKey: "status",
-        header: "وضعیت رزرو",
-        cell: (info) => {
-          const value = info.getValue();
-          return (
-            <p
-              className={`p-1 text-medium font-normal rounded-2xl ${
-                value === "تایید شده"
-                  ? "badge-success"
-                  : value === "در انتظار"
-                  ? "badge-warning"
-                  : "badge-danger"
-              }`}
-            >
-              {value as string}
-            </p>
-          );
-        },
-        enableSorting: true,
-      },
+    
       {
         accessorKey: "payment_status",
         header: "وضعیت پرداخت",
@@ -137,6 +110,14 @@ export default function PaymentsPage() {
           );
         },
         enableSorting: true,
+      },
+       {
+        accessorKey: "guests",
+        header: "نوع تراکنش",
+        enableSorting: true,
+        sortingFn: (rowA, rowB, columnId) =>
+          (rowA.getValue(columnId) as number) -
+          (rowB.getValue(columnId) as number),
       },
       {
         accessorKey: "actions",
@@ -187,6 +168,7 @@ export default function PaymentsPage() {
       id: 1,
       title: "هتل سراوان",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 150000000,
       guests: 88,
       status: "تایید شده",
@@ -197,6 +179,7 @@ export default function PaymentsPage() {
       id: 2,
       title: "شیراز پارک",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 150000000,
       guests: 70,
       status: "در انتظار",
@@ -207,6 +190,7 @@ export default function PaymentsPage() {
       id: 3,
       title: "تراول پارک",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 160000000,
       guests: 53,
       status: "در انتظار",
@@ -217,6 +201,7 @@ export default function PaymentsPage() {
       id: 4,
       title: "میدان جمهریه",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 180000000,
       guests: 10,
       status: "تایید شده",
@@ -227,6 +212,7 @@ export default function PaymentsPage() {
       id: 5,
       title: "ماهی پارک",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 170000000,
       guests: 7,
       status: "در انتظار",
@@ -237,6 +223,7 @@ export default function PaymentsPage() {
       id: 6,
       title: "کوه سراوان",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 170000000,
       guests: 38,
       status: "در انتظار",
@@ -247,6 +234,7 @@ export default function PaymentsPage() {
       id: 7,
       title: "ساحل سراوان",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 100000,
       guests: 85,
       status: "در انتظار",
@@ -257,6 +245,7 @@ export default function PaymentsPage() {
       id: 8,
       title: "ماهی پارک",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 160000000,
       guests: 741,
       status: "در انتظار",
@@ -267,6 +256,7 @@ export default function PaymentsPage() {
       id: 9,
       title: "ماهی پارک",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 190000000,
       guests: 52,
       status: "تایید شده",
@@ -277,6 +267,7 @@ export default function PaymentsPage() {
       id: 10,
       title: "نسرین پارک",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 170000000,
       guests: 976,
       status: "در انتظار",
@@ -287,6 +278,7 @@ export default function PaymentsPage() {
       id: 11,
       title: "ماهی پارک",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 170000000,
       guests: 52,
       status: "در انتظار",
@@ -297,6 +289,7 @@ export default function PaymentsPage() {
       id: 12,
       title: "ساحل سراوان",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 170000000,
       guests: 5,
       status: "در انتظار",
@@ -307,6 +300,7 @@ export default function PaymentsPage() {
       id: 13,
       title: "ماهی بهشهر",
       date: "1403/02/01/ 10:00",
+      trackingNumber:"123456789123456",
       price: 186600000,
       guests: 48,
       status: "تایید شده",
