@@ -37,9 +37,6 @@ interface BookingData {
   title: string;
   addres: string;
   price: number;
-  guests: number;
-  status: "تایید شده" | "در انتظار" | "لغو شده";
-  payment_status: "تایید شده" | "لغو شده";
   image: string;
 }
 
@@ -146,9 +143,6 @@ export default function FavoritesPage() {
       title: "شیراز پارک",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 150000000,
-      guests: 70,
-      status: "در انتظار",
-      payment_status: "تایید شده",
       image: image2.src,
     },
     {
@@ -156,9 +150,6 @@ export default function FavoritesPage() {
       title: "تراول پارک",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 160000000,
-      guests: 53,
-      status: "در انتظار",
-      payment_status: "لغو شده",
       image: image3.src,
     },
     {
@@ -166,9 +157,6 @@ export default function FavoritesPage() {
       title: "میدان جمهریه",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 180000000,
-      guests: 10,
-      status: "تایید شده",
-      payment_status: "لغو شده",
       image: image2.src,
     },
     {
@@ -176,9 +164,6 @@ export default function FavoritesPage() {
       title: "ماهی پارک",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 170000000,
-      guests: 7,
-      status: "در انتظار",
-      payment_status: "تایید شده",
       image: image3.src,
     },
     {
@@ -186,9 +171,6 @@ export default function FavoritesPage() {
       title: "کوه سراوان",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 170000000,
-      guests: 38,
-      status: "در انتظار",
-      payment_status: "لغو شده",
       image: image2.src,
     },
     {
@@ -196,9 +178,6 @@ export default function FavoritesPage() {
       title: "ساحل سراوان",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 100000,
-      guests: 85,
-      status: "در انتظار",
-      payment_status: "تایید شده",
       image: image.src,
     },
     {
@@ -206,9 +185,6 @@ export default function FavoritesPage() {
       title: "ماهی پارک",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 160000000,
-      guests: 741,
-      status: "در انتظار",
-      payment_status: "تایید شده",
       image: image2.src,
     },
     {
@@ -216,9 +192,6 @@ export default function FavoritesPage() {
       title: "ماهی پارک",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 190000000,
-      guests: 52,
-      status: "تایید شده",
-      payment_status: "لغو شده",
       image: image3.src,
     },
     {
@@ -226,9 +199,6 @@ export default function FavoritesPage() {
       title: "نسرین پارک",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 170000000,
-      guests: 976,
-      status: "در انتظار",
-      payment_status: "تایید شده",
       image: image2.src,
     },
     {
@@ -236,9 +206,6 @@ export default function FavoritesPage() {
       title: "ماهی پارک",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 170000000,
-      guests: 52,
-      status: "در انتظار",
-      payment_status: "لغو شده",
       image: image.src,
     },
     {
@@ -246,9 +213,6 @@ export default function FavoritesPage() {
       title: "ساحل سراوان",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 170000000,
-      guests: 5,
-      status: "در انتظار",
-      payment_status: "تایید شده",
       image: image3.src,
     },
     {
@@ -256,9 +220,6 @@ export default function FavoritesPage() {
       title: "ماهی بهشهر",
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 186600000,
-      guests: 48,
-      status: "تایید شده",
-      payment_status: "لغو شده",
       image: image2.src,
     },
   ];
