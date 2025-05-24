@@ -171,7 +171,7 @@ export default function PaymentsPage() {
       trackingNumber:"123456789123456",
       price: 150000000,
       guests: 88,
-      status: "1تایید شده",
+      status: "تایید شده",
       payment_status: "لغو شده",
       image: image.src,
     },
