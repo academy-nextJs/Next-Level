@@ -172,7 +172,7 @@ export default function PaymentsPage() {
       price: 150000000,
       guests: 88,
       status: "تایید شده",
-      payment_status: "1لغو شده",
+      payment_status: "لغو شده",
       image: image.src,
     },
     {
