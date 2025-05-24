@@ -39,7 +39,6 @@ interface BookingData {
   price: number;
   guests: number;
   status: "تایید شده" | "در انتظار" | "لغو شده";
-  payment_status: "تایید شده" | "لغو شده";
   image: string;
 }
 
