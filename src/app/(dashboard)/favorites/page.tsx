@@ -35,6 +35,7 @@ import Image from "next/image";
 interface BookingData {
   id: number;
   title: string;
+  addres: string;
   price: number;
   guests: number;
   status: "تایید شده" | "در انتظار" | "لغو شده";
