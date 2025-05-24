@@ -61,7 +61,7 @@ export default function FavoritesPage() {
       },
       {
         accessorKey: "image",
-        header: "تصویر",
+        header: "2تصویر",
         cell: (info) => (
           <Image
             src={info.getValue() as string}
