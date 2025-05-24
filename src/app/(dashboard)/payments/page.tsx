@@ -166,7 +166,7 @@ export default function PaymentsPage() {
   const data: BookingData[] = [
     {
       id: 1,
-      title: "هتل سراوان",
+      title: "1هتل سراوان",
       date: "1403/02/01/ 10:00",
       trackingNumber:"123456789123456",
       price: 150000000,
