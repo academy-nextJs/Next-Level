@@ -140,8 +140,6 @@ export default function FavoritesPage() {
       addres: " گیلان ، رشت ، میدان آزادی ، جنب چهار راه عظ....گیلان ، رشت...",
       price: 150000000,
       guests: 88,
-      status: "تایید شده",
-      payment_status: "لغو شده",
       image: image.src,
     },
     {
