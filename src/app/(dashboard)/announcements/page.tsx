@@ -1,6 +1,8 @@
 "use client";
 
 import {
+  Accordion,
+  AccordionItem,
   Badge,
   Button,
   Dropdown,
@@ -48,8 +50,20 @@ export default function AnnouncementsPage() {
   {key: "همه", label: "همه"},
 
 ];
+ const defaultContent =
+    "فروشنده امیر محمد ملایی یک خانه برای رزرو آگهی کرده است";
+  
 
-
+const sellers = [
+  { id: 1, name: "امیر محمد ملایی", date: "12/05/1401", content: "یک خانه برای رزرو آگهی کرده است" },
+  { id: 2, name: "علی رضایی", date: "15/06/1401", content: "آپارتمان در تهران فروشی" },
+  { id: 3, name: "سارا احمدی", date: "10/07/1401", content: "زمین در شمال کشور" },
+  { id: 4, name: "رضا موسوی", date: "20/08/1401", content: "ویلا در شمال" },
+  { id: 5, name: "نرگس بهرامی", date: "01/09/1401", content: "آپارتمان دو خوابه" },
+  // ... بیشتر اضافه کن
+];
+const ITEMS_PER_PAGE = 2;
+const [page, setPage] = useState(1);
 
   return (
     <div className="space-y-4">
@@ -79,6 +93,7 @@ export default function AnnouncementsPage() {
 <Dropdown>
   <DropdownTrigger>
     <Button className="w-72" color="warning">
+        <CgCheck size={20} />
       علامت‌گذاری به عنوان خوانده شده
     </Button>
   </DropdownTrigger>
@@ -138,19 +153,127 @@ export default function AnnouncementsPage() {
       </div>
 
       <div className="sm:w-1/3 w-full hidden sm:block"></div>
+      
     </div>
+         <Accordion  variant="shadow">
+  <AccordionItem key="1" aria-label="Accordion 1" title="خوانده شده">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-68">
+      <div className="flex-1 text-right">
+        {defaultContent}
+      </div>
+
+      <h2 className="text-center flex-shrink-0 w-full sm:w-auto">
+        12/05/1401
+      </h2>
+
+      <Button className="flex items-center gap-2" color="warning">
+        <CgCheck size={20} />
+        علامت‌گذاری به عنوان خوانده شده
+      </Button>
+    </div>
+  </AccordionItem>
+
+  <AccordionItem key="2" aria-label="Accordion 2"title="خوانده شده">
+     <div className="flex flex-col sm:flex-row items-center justify-between gap-68">
+      <div className="flex-1 text-right">
+        {defaultContent}
+      </div>
+
+      <h2 className="text-center flex-shrink-0 w-full sm:w-auto">
+        12/05/1401
+      </h2>
+
+      <Button className="flex items-center gap-2" color="warning">
+        <CgCheck size={20} />
+        علامت‌گذاری به عنوان خوانده شده
+      </Button>
+    </div>
+  </AccordionItem>
+
+
+</Accordion>
+    
+     <Accordion variant="shadow">
+  <AccordionItem key="1" aria-label="Accordion 1" title="خوانده شده">
+    <div className="flex flex-col sm:flex-row items-center justify-between gap-68">
+      <div className="flex-1 text-right">
+        {defaultContent}
+      </div>
+
+      <h2 className="text-center flex-shrink-0 w-full sm:w-auto">
+        12/05/1401
+      </h2>
+
+      <Button className="flex items-center gap-2" color="warning">
+        <CgCheck size={20} />
+        علامت‌گذاری به عنوان خوانده شده
+      </Button>
+    </div>
+  </AccordionItem>
+
+  <AccordionItem key="2" aria-label="Accordion 2" title="خوانده شده">
+     <div className="flex flex-col sm:flex-row items-center justify-between gap-68">
+      <div className="flex-1 text-right">
+        {defaultContent}
+      </div>
+
+      <h2 className="text-center flex-shrink-0 w-full sm:w-auto">
+        12/05/1401
+      </h2>
+
+      <Button className="flex items-center gap-2" color="warning">
+        <CgCheck size={20} />
+        علامت‌گذاری به عنوان خوانده شده
+      </Button>
+    </div>
+  </AccordionItem>
+
+  <AccordionItem key="3" aria-label="Accordion 3" title="خوانده شده">
+     <div className="flex flex-col sm:flex-row items-center justify-between gap-68">
+      <div className="flex-1 text-right">
+        {defaultContent}
+      </div>
+
+      <h2 className="text-center flex-shrink-0 w-full sm:w-auto">
+        12/05/1401
+      </h2>
+
+      <Button className="flex items-center gap-2" color="warning">
+        <CgCheck size={20} />
+        علامت‌گذاری به عنوان خوانده شده
+      </Button>
+    </div>
+  </AccordionItem>
+  
+  <AccordionItem key="4" aria-label="Accordion 4" title="خوانده شده">
+     <div className="flex flex-col sm:flex-row items-center justify-between gap-68">
+      <div className="flex-1 text-right">
+        {defaultContent}
+      </div>
+
+      <h2 className="text-center flex-shrink-0 w-full sm:w-auto">
+        12/05/1401
+      </h2>
+
+      <Button className="flex items-center gap-2" color="warning">
+        <CgCheck size={20} />
+        علامت‌گذاری به عنوان خوانده شده
+      </Button>
+    </div>
+  </AccordionItem>
+</Accordion>
       <div className="overflow-x-auto  rounded-xl">
       </div>
       <div className="flex justify-end">
-        {/* <Pagination
-          dir="ltr"
+       <Pagination
+          dir="ltl"
           color="warning"
-          isCompact
+          total={Math.ceil(sellers.length / ITEMS_PER_PAGE)}
+          page={page}
+          onChange={setPage}
           showControls
-          total={table.getPageCount()}
-          page={table.getState().pagination.pageIndex + 1}
-          onChange={(page) => table.setPageIndex(page - 1)}
-        /> */}
+          isCompact
+        />
       </div>
     </div>
   );
