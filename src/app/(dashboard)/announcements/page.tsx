@@ -127,17 +127,16 @@ export default function AnnouncementsPage() {
  
       </div>
   <div className="w-full bg-gray-200 dark:bg-gray-800 py-3 px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
-      {/* اعلان‌ها - راست در حالت دسکتاپ */}
+    
       <div className="text-sm font-medium text-gray-800 dark:text-gray-100 sm:w-1/3 text-right w-full">
         اعلان‌ها
       </div>
 
-      {/* تاریخ - مرکز در همه حال */}
+      
       <div className="text-sm font-medium text-gray-700 dark:text-gray-300 sm:w-1/3 text-center w-full">
         تاریخ
       </div>
 
-      {/* فضای خالی چپ در حالت دسکتاپ برای تعادل */}
       <div className="sm:w-1/3 w-full hidden sm:block"></div>
     </div>
       <div className="overflow-x-auto  rounded-xl">
