@@ -39,10 +39,10 @@ import { CgCheck } from "react-icons/cg";
 
 
 export default function AnnouncementsPage() {
-  const [pagination, setPagination] = useState({
-    pageIndex: 0,
-    pageSize: 5,
-  });
+  // const [pagination, setPagination] = useState({
+  //   pageIndex: 0,
+  //   pageSize: 5,
+  // });
 
  const animals = [
   {key: "خوانده شده", label: "خوانده شده"},
