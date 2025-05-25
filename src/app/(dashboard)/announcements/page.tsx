@@ -60,7 +60,7 @@ const sellers = [
   { id: 3, name: "سارا احمدی", date: "10/07/1401", content: "زمین در شمال کشور" },
   { id: 4, name: "رضا موسوی", date: "20/08/1401", content: "ویلا در شمال" },
   { id: 5, name: "نرگس بهرامی", date: "01/09/1401", content: "آپارتمان دو خوابه" },
-  // ... بیشتر اضافه کن
+
 ];
 const ITEMS_PER_PAGE = 2;
 const [page, setPage] = useState(1);
