@@ -10,7 +10,7 @@ import {
   SortingState,
 } from "@tanstack/react-table";
 import { useState } from "react";
-import { BsArrowDown, BsArrowUp } from "react-icons/bs";
+import { BsArrowDown, BsArrowUp, BsCursorFill } from "react-icons/bs";
 import { FaListCheck } from "react-icons/fa6";
 import { useDisclosure } from "@heroui/react";
 import ModalPassengerList from "./PassengerList";
@@ -25,6 +25,7 @@ interface ReservationData {
   id: number;
   checkIn: string;
   checkOut: string;
+  number: string;
 }
 
 export default function ModalReserve({
@@ -42,13 +43,15 @@ export default function ModalReserve({
   const reservations: ReservationData[] = [
     {
       id: 1,
-      checkIn: "1403/02/05",
-      checkOut: "1403/02/10",
+      checkIn: "امیرمحمد ملایی",
+      checkOut: "مرد",
+      number:"09331334326"
     },
     {
       id: 2,
-      checkIn: "1403/02/20",
-      checkOut: "1403/02/25",
+      checkIn: "امیرمحمد ملایی",
+      checkOut: "زن",
+      number:"09371834774"
     },
   ];
 
@@ -61,25 +64,31 @@ export default function ModalReserve({
 
     {
       accessorKey: "checkIn",
-      header: "تاریخ ورود",
+      header: "نام ",
       cell: (info) => info.getValue(),
     },
     {
       accessorKey: "checkOut",
-      header: "تاریخ خروج",
+      header: " جنسیت",
+      cell: (info) => info.getValue(),
+    },
+    {
+      accessorKey: "number",
+      header: " شماره تماس",
       cell: (info) => info.getValue(),
     },
     {
       accessorKey: "action",
-      header: "عملیات",
+      header: "ارسال پیام",
       cell: (info) => (
         <div className="flex items-center justify-center gap-2">
-          <button
+          <BsCursorFill size={20} color="warning" />
+          {/* <button
             className="bg-amber-500 text-black px-4 py-2 rounded-md"
             onClick={onPassengerListOpen}
           >
             اطلاعات مسافران
-          </button>
+          </button> */}
         </div>
       ),
     },
@@ -109,7 +118,7 @@ export default function ModalReserve({
               <div className="flex items-center justify-between border-b pb-4 mb-4">
                 <h2 className="text-3xl font-black text-right flex items-center gap-2">
                   <FaListCheck className="dark:text-amber-200" size={30} />
-                  لیست رزروهای {selectedRow?.title}
+                  جزئیات مسافرها 
                 </h2>
                 <button
                   className="flex items-center gap-2 border border-red-400 text-red-500 rounded-full px-6 py-2 text-lg font-bold hover:bg-red-50 dark:hover:bg-red-500 dark:text-white transition"
