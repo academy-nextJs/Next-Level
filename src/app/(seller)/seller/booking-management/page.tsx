@@ -33,10 +33,13 @@ import image2 from "./../../../../assets/Avatar2.png";
 import image3 from "./../../../../assets/Avatar3.png";
 import Image from "next/image";
 import ModalDetails from "./ModalDetails";
+import { SlBan } from "react-icons/sl";
+import { AiFillCheckCircle } from "react-icons/ai";
 
 export interface BookingData {
   id: number;
   title: string;
+  title2: string;
   date: string;
   price: number;
   guests: number;
@@ -78,7 +81,13 @@ export default function BookingTable() {
       },
       {
         accessorKey: "title",
-        header: "نام اقامتگاه",
+        header: "نام ملک",
+        cell: (info) => info.getValue(),
+        enableSorting: true,
+      },
+      {
+        accessorKey: "title2",
+        header: "اطلاعات مسافر",
         cell: (info) => info.getValue(),
         enableSorting: true,
       },
@@ -89,21 +98,15 @@ export default function BookingTable() {
       },
       {
         accessorKey: "price",
-        header: "قیمت کل",
+        header: "مبلغ ",
         cell: (info) => `${(+info.getValue()).toLocaleString()} تومان`,
         enableSorting: true,
         sortingFn: (rowA, rowB, columnId) =>
           (rowA.getValue(columnId) as number) -
           (rowB.getValue(columnId) as number),
       },
-      {
-        accessorKey: "guests",
-        header: "تعداد مسافر",
-        enableSorting: true,
-        sortingFn: (rowA, rowB, columnId) =>
-          (rowA.getValue(columnId) as number) -
-          (rowB.getValue(columnId) as number),
-      },
+      
+    
       {
         accessorKey: "status",
         header: "وضعیت رزرو",
@@ -157,8 +160,14 @@ export default function BookingTable() {
               <DropdownMenu aria-label="Static Actions">
                 <DropdownItem color="success" key="payment">
                   <div className="flex items-center gap-2">
-                    <GiWallet size={20} />
-                    پرداخت
+                    <AiFillCheckCircle size={20} />
+                    تایید رزر
+                  </div>
+                </DropdownItem>
+                <DropdownItem color="success" key="payment">
+                  <div className="flex items-center gap-2">
+                    <SlBan size={20} />
+                    لقو رزرو
                   </div>
                 </DropdownItem>
                 <DropdownItem
@@ -198,6 +207,7 @@ export default function BookingTable() {
     {
       id: 1,
       title: "هتل سراوان",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 150000000,
       guests: 88,
@@ -208,6 +218,7 @@ export default function BookingTable() {
     {
       id: 2,
       title: "شیراز پارک",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 150000000,
       guests: 70,
@@ -218,6 +229,7 @@ export default function BookingTable() {
     {
       id: 3,
       title: "تراول پارک",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 160000000,
       guests: 53,
@@ -228,6 +240,7 @@ export default function BookingTable() {
     {
       id: 4,
       title: "میدان جمهریه",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 180000000,
       guests: 10,
@@ -238,6 +251,7 @@ export default function BookingTable() {
     {
       id: 5,
       title: "ماهی پارک",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 170000000,
       guests: 7,
@@ -248,6 +262,7 @@ export default function BookingTable() {
     {
       id: 6,
       title: "کوه سراوان",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 170000000,
       guests: 38,
@@ -258,6 +273,7 @@ export default function BookingTable() {
     {
       id: 7,
       title: "ساحل سراوان",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 100000,
       guests: 85,
@@ -268,6 +284,7 @@ export default function BookingTable() {
     {
       id: 8,
       title: "ماهی پارک",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 160000000,
       guests: 741,
@@ -278,6 +295,7 @@ export default function BookingTable() {
     {
       id: 9,
       title: "ماهی پارک",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 190000000,
       guests: 52,
@@ -288,6 +306,7 @@ export default function BookingTable() {
     {
       id: 10,
       title: "نسرین پارک",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 170000000,
       guests: 976,
@@ -298,6 +317,7 @@ export default function BookingTable() {
     {
       id: 11,
       title: "ماهی پارک",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 170000000,
       guests: 52,
@@ -308,6 +328,7 @@ export default function BookingTable() {
     {
       id: 12,
       title: "ساحل سراوان",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 170000000,
       guests: 5,
@@ -318,6 +339,7 @@ export default function BookingTable() {
     {
       id: 13,
       title: "ماهی بهشهر",
+      title2: " سبحان عرب خزائلی ،4/1/8...",
       date: "1403/02/01/ 10:00",
       price: 186600000,
       guests: 48,
@@ -356,7 +378,7 @@ export default function BookingTable() {
         </div>
         <input
           type="text"
-          placeholder="نام اقامتگاه مورد نظر را جستجو کنید..."
+          placeholder="نام مسافر مورد نظر را جستجو کنید..."
           value={globalFilter}
           onChange={(e) => setGlobalFilter(e.target.value)}
           className="w-1/3 p-2 rounded-md border-2 border-amber-500"
